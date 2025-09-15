@@ -1,8 +1,8 @@
-import Post from "../models/post.js";
+import Comment from "../models/comment.js";
 
-export default class PostController {
-    getPosts(req, res) {
-        Post.find({})
+export default class CommentController {
+    getAllComments(req, res) {
+        Comment.find({})
             .then(data => res.send({ result: 200, data: data }))
             .catch(err => {
                 console.log(err);
@@ -10,9 +10,9 @@ export default class PostController {
             })
     }
 
-    createPost(data, res) {
+    createComment(data, res) {
         console.log(data)
-        new Post(data).save()
+        new Comment(data).save()
             .then(data => res.send({ result: 200, data: data }))
             .catch(err => {
                 console.log(err);
@@ -20,8 +20,8 @@ export default class PostController {
             })
     }
 
-    updatePost(req, res) {
-        Post.findByIdAndUpdate(req.params.id, req.body, {
+    updateComment(req, res) {
+        Comment.findByIdAndUpdate(req.params.id, req.body, {
             new:
                 true
         })
@@ -32,8 +32,8 @@ export default class PostController {
             })
     }
 
-    deletePost(req, res) {
-        Post.findByIdAndDelete(req.params.id, {
+    deleteComment(req, res) {
+        Comment.findByIdAndDelete(req.params.id, {
             new: true
         })
             .then(data => res.send({ result: 200, data: data }))
