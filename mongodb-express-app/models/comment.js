@@ -8,4 +8,4 @@ const commentSchema = new Schema({
     post: { type: Schema.Types.ObjectId, ref: 'post', required: true } // foreign key linking to post
 });
 
-export default mongoose.model('Post', commentSchema)
+export default mongoose.model('Comment', commentSchema)
